@@ -1,0 +1,83 @@
+"use client";
+
+import { Search, X } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import {
+  toggleFilterTag,
+  clearFilterTags,
+  setSearchQuery,
+} from "@/store/slices/uiSlice";
+import { cn } from "@/lib/cn";
+
+const FILTER_TAGS = [
+  "Java",
+  "Spring Boot",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "JavaScript",
+  "SQL",
+  "Node.js",
+  "CSS",
+  "REST APIs",
+  "Algorithms",
+];
+
+export default function ProjectFilters() {
+  const dispatch = useAppDispatch();
+  const activeTags = useAppSelector((s) => s.ui.activeFilterTags);
+  const searchQuery = useAppSelector((s) => s.ui.searchQuery);
+
+  return (
+    <div className="space-y-4 mb-8">
+      {/* Search */}
+      <div className="relative">
+        <Search
+          size={14}
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]"
+        />
+        <input
+          type="text"
+          placeholder="Search projects…"
+          value={searchQuery}
+          onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+          className="w-full pl-9 pr-4 py-2 text-sm bg-[var(--surface)] border border-[var(--border)] rounded-md text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+        />
+        {searchQuery && (
+          <button
+            onClick={() => dispatch(setSearchQuery(""))}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)]"
+          >
+            <X size={14} />
+          </button>
+        )}
+      </div>
+
+      {/* Tag chips */}
+      <div className="flex flex-wrap gap-2">
+        {activeTags.length > 0 && (
+          <button
+            onClick={() => dispatch(clearFilterTags())}
+            className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-md bg-[var(--accent)] text-white"
+          >
+            Clear <X size={11} />
+          </button>
+        )}
+        {FILTER_TAGS.map((tag) => (
+          <button
+            key={tag}
+            onClick={() => dispatch(toggleFilterTag(tag))}
+            className={cn(
+              "font-mono text-xs px-2.5 py-1 rounded-md border transition-colors",
+              activeTags.includes(tag)
+                ? "bg-[var(--accent)] text-white border-[var(--accent)]"
+                : "bg-[var(--surface)] text-[var(--muted)] border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            )}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
