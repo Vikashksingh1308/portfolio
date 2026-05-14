@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
+import { Suspense } from "react";
 import "./globals.css";
 import StoreProvider from "@/components/StoreProvider";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -83,13 +84,15 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
         <StoreProvider
           initialProjects={PROJECTS}
           initialTheme={initialTheme}
         >
           <ThemeProvider>
-            <Navbar />
+            <Suspense fallback={<div className="h-14 border-b border-border bg-surface-raised" />}>
+              <Navbar />
+            </Suspense>
             <main className="flex-1">{children}</main>
             <Footer />
             <CookieConsent />

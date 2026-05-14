@@ -12,21 +12,21 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[var(--border)]"
+      className="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-border"
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-mono text-xs text-[var(--accent)] uppercase tracking-widest mb-6">
+        <h2 className="font-mono text-xs text-accent uppercase tracking-widest mb-6">
           About
         </h2>
-        <div className="space-y-4 text-[var(--muted)] leading-relaxed max-w-2xl">
+        <div className="space-y-4 text-muted leading-relaxed max-w-2xl">
           <p>
             I&apos;m a software engineer with 6+ years of experience building
-            scalable platforms, APIs, and full-stack applications. Most of my
-            career has been in MarTech — owning end-to-end design, architecture,
+            scalable solutions, APIs, and full-stack applications. Most of my
+            career has been in MarTech - owning end-to-end design, architecture,
             and optimization of a Salesforce Marketing Cloud platform that serves
             millions of users across 150+ airline partner integrations.
           </p>
@@ -41,7 +41,7 @@ export default function About() {
           <p>
             Outside of work I&apos;m an active open source contributor,
             currently leaning further into backend engineering with Java and
-            Spring Boot — building distributed systems, event-driven
+            Spring Boot - building distributed systems, event-driven
             architectures, and APIs that go well beyond what a single SaaS
             platform needs.
           </p>

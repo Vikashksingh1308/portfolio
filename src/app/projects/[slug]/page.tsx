@@ -1,13 +1,10 @@
 import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
-import { getIronSession } from "iron-session";
 import Link from "next/link";
 import { Github, Star, GitFork, Clock, ArrowLeft } from "lucide-react";
 import { getProjectBySlug, PROJECTS } from "@/lib/projects";
 import { getRepoDetails } from "@/lib/github";
-import { sessionOptions } from "@/lib/session";
-import type { SessionData } from "@/lib/session";
 import type { Metadata } from "next";
+import ViewTracker from "./ViewTracker";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -32,16 +29,6 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  // Track in session
-  const cookieStore = await cookies();
-  const session = await getIronSession<SessionData>(cookieStore, sessionOptions);
-  if (!session.viewedProjects) session.viewedProjects = [];
-  if (!session.viewedProjects.includes(slug)) {
-    session.viewedProjects.unshift(slug);
-    session.viewedProjects = session.viewedProjects.slice(0, 5);
-  }
-  await session.save();
-
   const { repoData, readmeText } = await getRepoDetails(project.githubRepo);
 
   const pushedAt = repoData?.pushed_at
@@ -54,6 +41,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+      <ViewTracker slug={slug} />
       {/* Back */}
       <Link
         href="/projects"

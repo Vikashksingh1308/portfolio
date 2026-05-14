@@ -16,8 +16,8 @@ export default function ThemeToggle({ className }: { className?: string }) {
       aria-label="Toggle theme"
       className={cn(
         "inline-flex items-center justify-center w-9 h-9 rounded-md",
-        "border border-[var(--border)] text-[var(--muted)]",
-        "hover:text-[var(--foreground)] hover:border-[var(--muted)] transition-colors",
+        "border border-border text-muted",
+        "hover:text-foreground hover:border-muted transition-colors",
         className
       )}
     >

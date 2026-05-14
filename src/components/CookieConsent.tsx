@@ -22,14 +22,14 @@ export default function CookieConsent() {
     <div
       role="dialog"
       aria-label="Cookie consent"
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-50 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 shadow-lg"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-50 rounded-lg border border-border bg-surface p-4 shadow-lg"
     >
-      <p className="text-sm text-[var(--muted)] mb-3">
+      <p className="text-sm text-muted mb-3">
         This site uses cookies to remember your theme preference and session.
       </p>
       <button
         onClick={accept}
-        className="text-sm font-medium px-4 py-1.5 rounded bg-[var(--accent)] text-white hover:bg-[var(--accent-muted)] transition-colors"
+        className="text-sm font-medium px-4 py-1.5 rounded bg-accent text-white hover:bg-accent-muted transition-colors"
       >
         Accept
       </button>

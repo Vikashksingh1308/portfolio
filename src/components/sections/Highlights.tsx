@@ -12,8 +12,8 @@ interface Stat {
 const STATS: Stat[] = [
   { value: "6", suffix: "+ yrs", label: "Engineering experience" },
   { value: "150", suffix: "+", label: "Airline partner integrations" },
-  { value: "18", suffix: "+", label: "Email products delivered" },
-  { value: "40", suffix: "%", label: "Dev time reduction" },
+  { value: "22", suffix: "+", label: "Email products delivered" },
+  { value: "60", suffix: "%", label: "Dev time reduction" },
   { value: "14", suffix: "%", label: "Insurance booking uplift" },
   { value: "10", suffix: "%", label: "NPS improvement" },
 ];
@@ -56,7 +56,7 @@ export default function Highlights() {
   return (
     <section
       ref={ref}
-      className="py-12 px-4 sm:px-6 border-y border-[var(--border)] bg-[var(--surface)]"
+      className="py-12 px-4 sm:px-6 border-y border-border bg-surface"
     >
       <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
         {STATS.map((stat, i) => (
@@ -67,7 +67,7 @@ export default function Highlights() {
             transition={{ delay: i * 0.07, duration: 0.4 }}
             className="text-center"
           >
-            <div className="font-mono text-2xl sm:text-3xl font-bold text-[var(--accent)]">
+            <div className="font-mono text-2xl sm:text-3xl font-bold text-accent">
               {inView ? (
                 <Counter
                   target={parseInt(stat.value)}
@@ -77,7 +77,7 @@ export default function Highlights() {
                 <span>0{stat.suffix}</span>
               )}
             </div>
-            <p className="text-xs text-[var(--muted)] mt-1 leading-snug">
+            <p className="text-xs text-muted mt-1 leading-snug">
               {stat.label}
             </p>
           </motion.div>

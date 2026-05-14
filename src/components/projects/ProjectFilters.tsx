@@ -34,19 +34,19 @@ export default function ProjectFilters() {
       <div className="relative">
         <Search
           size={14}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-muted"
         />
         <input
           type="text"
           placeholder="Search projects…"
           value={searchQuery}
           onChange={(e) => dispatch(setSearchQuery(e.target.value))}
-          className="w-full pl-9 pr-4 py-2 text-sm bg-[var(--surface)] border border-[var(--border)] rounded-md text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+          className="w-full pl-9 pr-4 py-2 text-sm bg-surface border border-border rounded-md text-foreground placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
         />
         {searchQuery && (
           <button
             onClick={() => dispatch(setSearchQuery(""))}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)]"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-foreground"
           >
             <X size={14} />
           </button>
@@ -58,7 +58,7 @@ export default function ProjectFilters() {
         {activeTags.length > 0 && (
           <button
             onClick={() => dispatch(clearFilterTags())}
-            className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-md bg-[var(--accent)] text-white"
+            className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-md bg-accent text-white"
           >
             Clear <X size={11} />
           </button>
@@ -70,8 +70,8 @@ export default function ProjectFilters() {
             className={cn(
               "font-mono text-xs px-2.5 py-1 rounded-md border transition-colors",
               activeTags.includes(tag)
-                ? "bg-[var(--accent)] text-white border-[var(--accent)]"
-                : "bg-[var(--surface)] text-[var(--muted)] border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                ? "bg-accent text-white border-accent"
+                : "bg-surface text-muted border-border hover:border-accent hover:text-accent"
             )}
           >
             {tag}

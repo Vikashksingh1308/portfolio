@@ -22,10 +22,10 @@ const EXPERIENCE: Role[] = [
     current: true,
     bullets: [
       "Platform engineer & SME for Salesforce Marketing Cloud, owning end-to-end design, architecture, and optimization across 150+ airline partner integrations serving millions of users.",
-      "Architected a standardized development framework enforcing consistent design patterns platform-wide — achieved 40% reduction in development time and significantly improved maintainability.",
+      "Architected a standardized development framework enforcing consistent design patterns platform-wide - achieved 40% reduction in development time and significantly improved maintainability.",
       "Designed and implemented REST API integrations between platform APIs and core product systems, enabling personalized experiences and real-time data synchronization.",
       "Built CRM automation workflows in SQL and JavaScript that drove a 14% increase in insurance booking volume.",
-      "Led end-to-end delivery of 18+ marketing email products and optimized 9 service email products across 110+ partners using HTML, CSS, AMPScript, SQL, Java, and REST APIs.",
+      "Led end-to-end delivery of 22+ marketing email products and optimized 9 service email products across 110+ partners using HTML, CSS, AMPScript, SQL and REST APIs.",
       "Orchestrated GDPR-compliant data model enhancements for customer subscription management.",
       "Configured SPF and DMARC authentication infrastructure from scratch, resolved deliverability issues and protected sending reputation.",
       "Implemented strategic processes that contributed to a 10% NPS improvement and growth in gross car bookings.",
@@ -50,7 +50,7 @@ const EXPERIENCE: Role[] = [
     period: "04/2017 – 05/2018",
     bullets: [
       "Developed and maintained the company website with a focus on responsive design and seamless frontend↔backend integration.",
-      "Designated internal SME for the data analysis team — delivered knowledge transfer sessions and technical onboarding for new members.",
+      "Designated internal SME for the data analysis team - delivered knowledge transfer sessions and technical onboarding for new members.",
       "Collaborated with cross-functional teams to deliver integrated solutions aligned with business objectives.",
     ],
   },
@@ -64,14 +64,14 @@ export default function Experience() {
     <section
       ref={ref}
       id="experience"
-      className="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[var(--border)]"
+      className="py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-border"
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-mono text-xs text-[var(--accent)] uppercase tracking-widest mb-10">
+        <h2 className="font-mono text-xs text-accent uppercase tracking-widest mb-10">
           Experience
         </h2>
 
@@ -89,26 +89,26 @@ export default function Experience() {
                 className="sm:pl-10 relative"
               >
                 {/* Timeline dot */}
-                <div className="hidden sm:flex absolute left-0 top-1 w-7 h-7 items-center justify-center rounded-full bg-[var(--surface)] border border-[var(--border)]">
-                  <Briefcase size={12} className="text-[var(--accent)]" />
+                <div className="hidden sm:flex absolute left-0 top-1 w-7 h-7 items-center justify-center rounded-full bg-surface border border-border">
+                  <Briefcase size={12} className="text-accent" />
                 </div>
 
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                   <div>
-                    <h3 className="font-semibold text-[var(--foreground)]">
+                    <h3 className="font-semibold text-foreground">
                       {role.title}
                     </h3>
-                    <p className="text-sm text-[var(--accent)] mt-0.5">
+                    <p className="text-sm text-accent mt-0.5">
                       {role.company}
-                      <span className="text-[var(--muted)]">
+                      <span className="text-muted">
                         {" "}· {role.location}
                       </span>
                     </p>
                   </div>
-                  <span className="font-mono text-xs text-[var(--muted)] border border-[var(--border)] px-2 py-0.5 rounded-full whitespace-nowrap">
+                  <span className="font-mono text-xs text-muted border border-border px-2 py-0.5 rounded-full whitespace-nowrap">
                     {role.period}
                     {role.current && (
-                      <span className="ml-1.5 inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)] align-middle" />
+                      <span className="ml-1.5 inline-block w-1.5 h-1.5 rounded-full bg-accent align-middle" />
                     )}
                   </span>
                 </div>
@@ -117,7 +117,7 @@ export default function Experience() {
                   {role.bullets.map((b, j) => (
                     <li
                       key={j}
-                      className="flex gap-2 text-sm text-[var(--muted)] leading-relaxed"
+                      className="flex gap-2 text-sm text-muted leading-relaxed"
                     >
                       <span className="mt-2 shrink-0 w-1 h-1 rounded-full bg-[var(--border)]" />
                       {b}

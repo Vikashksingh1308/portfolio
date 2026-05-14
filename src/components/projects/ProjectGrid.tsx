@@ -10,7 +10,7 @@ export default function ProjectGrid() {
 
   if (projects.length === 0) {
     return (
-      <div className="py-16 text-center text-[var(--muted)] text-sm">
+      <div className="py-16 text-center text-muted text-sm">
         No projects match your filters.
       </div>
     );

@@ -11,21 +11,21 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    slug: "car-rental-system",
-    title: "Car Rental System",
+    slug: "snake-game",
+    title: "Snake Game",
     description:
-      "A full-featured car rental management system with booking, fleet management, and customer workflows.",
-    tech: ["Java", "Spring Boot", "SQL"],
-    githubRepo: "CarRentalSystem",
-    featured: true,
+      "Classic Snake game implemented in Java, demonstrating OOP design, game loops, and rendering.",
+    tech: ["Java"],
+    githubRepo: "SnakeGame",
+    featured: false,
   },
   {
-    slug: "java-rest-api-httpclient-tutorial",
-    title: "Java REST API & HttpClient Tutorial",
+    slug: "react-full-stack-booking-app",
+    title: "Full-Stack Booking App",
     description:
-      "A practical guide and reference implementation for building REST APIs in Java using the HttpClient library.",
-    tech: ["Java", "REST APIs"],
-    githubRepo: "java-rest-api-httpclient-tutorial",
+      "End-to-end booking application with React frontend, REST API backend, and persistent data layer.",
+    tech: ["JavaScript", "React", "Node.js", "REST APIs"],
+    githubRepo: "react-full-stack-booking-app",
     featured: true,
   },
   {
@@ -47,22 +47,22 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
-    slug: "react-full-stack-booking-app",
-    title: "Full-Stack Booking App",
+    slug: "car-rental-system",
+    title: "Car Rental System",
     description:
-      "End-to-end booking application with React frontend, REST API backend, and persistent data layer.",
-    tech: ["JavaScript", "React", "Node.js", "REST APIs"],
-    githubRepo: "react-full-stack-booking-app",
+      "A full-featured car rental management system with booking, fleet management, and customer workflows.",
+    tech: ["Java", "Spring Boot", "SQL"],
+    githubRepo: "CarRentalSystem",
     featured: true,
   },
   {
-    slug: "snake-game",
-    title: "Snake Game",
+    slug: "java-rest-api-httpclient-tutorial",
+    title: "Java REST API & HttpClient Tutorial",
     description:
-      "Classic Snake game implemented in Java, demonstrating OOP design, game loops, and rendering.",
-    tech: ["Java"],
-    githubRepo: "SnakeGame",
-    featured: false,
+      "A practical guide and reference implementation for building REST APIs in Java using the HttpClient library.",
+    tech: ["Java", "REST APIs"],
+    githubRepo: "java-rest-api-httpclient-tutorial",
+    featured: true,
   },
 ];
 

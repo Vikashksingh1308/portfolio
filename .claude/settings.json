@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($pkgs = @\\(\"tailwindcss-animate\",\"prettier\",\"eslint-config-prettier\",\"@types/uuid\"\\); foreach \\($p in $pkgs\\) { $exists = Test-Path \"c:\\\\Users\\\\vsingh\\\\OneDrive - CarTrawler\\\\Desktop\\\\Books\\\\portfolio\\\\node_modules\\\\$p\"; Write-Host \"$p : $exists\" })"
+    ]
+  }
+}

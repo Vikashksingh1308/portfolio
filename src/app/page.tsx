@@ -12,7 +12,7 @@ import Education from "@/components/sections/Education";
 import RecentlyViewed from "@/components/sections/RecentlyViewed";
 
 export const metadata: Metadata = {
-  title: "Vikash Kumar Singh — Software Engineer",
+  title: "Vikash Kumar Singh - Software Engineer",
   description:
     "Software Engineer with 6+ years building scalable platforms, APIs, and full-stack applications. Based in Dublin, Ireland.",
 };
