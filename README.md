@@ -32,17 +32,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Environment variables
-
-| Variable | Required | Description |
-|---|---|---|
-| `SESSION_SECRET` | Yes (prod) | 32+ char string for iron-session encryption |
-| `GITHUB_TOKEN` | No | GitHub PAT - raises rate limit from 60 to 5000 req/hr |
-| `RESEND_API_KEY` | No | Resend API key for contact form emails |
-| `CONTACT_EMAIL` | No | Recipient address for contact form (defaults to Gmail) |
-
-Without `RESEND_API_KEY` the contact form logs the payload to the console instead of sending - safe for local development.
-
 ## Scripts
 
 ```bash
