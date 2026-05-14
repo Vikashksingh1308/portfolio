@@ -12,31 +12,54 @@ interface FormState {
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "rate-limited">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
     setErrorMsg("");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      if (res.status === 429) { setStatus("rate-limited"); return; }
-      if (!res.ok) {
-        const d = await res.json();
-        setErrorMsg(d.error ?? "Something went wrong.");
-        setStatus("error");
-        return;
-      }
-
+    // Honeypot — if a bot filled this, pretend it succeeded and bail
+    const formEl = e.currentTarget;
+    const botField = formEl.elements.namedItem("botcheck") as HTMLInputElement | null;
+    if (botField?.value) {
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
+      return;
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setErrorMsg("Form is not configured. Please email me directly.");
+      setStatus("error");
+      return;
+    }
+
+    const payload = {
+      access_key: accessKey,
+      subject: `New portfolio message from ${form.name}`,
+      from_name: "Portfolio Contact Form",
+      name: form.name,
+      email: form.email,
+      message: form.message,
+    };
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setErrorMsg(data.message ?? "Something went wrong.");
+        setStatus("error");
+      }
     } catch {
       setErrorMsg("Network error. Please try again.");
       setStatus("error");
@@ -72,17 +95,18 @@ export default function ContactForm() {
           <p className="font-semibold text-accent mb-1">Message sent!</p>
           <p className="text-sm text-muted">I&apos;ll get back to you soon.</p>
         </div>
-      ) : status === "rate-limited" ? (
-        <div className="rounded-lg border border-border bg-surface p-6 text-center">
-          <p className="text-sm text-muted">
-            You&apos;ve reached the message limit for this session. Email me directly at{" "}
-            <Link href="mailto:vikashksingh1308@gmail.com" className="text-accent hover:underline">
-              vikashksingh1308@gmail.com
-            </Link>.
-          </p>
-        </div>
       ) : (
         <form onSubmit={submit} className="space-y-5">
+          {/* Honeypot — hidden from real users, traps bots */}
+          <input
+            type="text"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            style={{ display: "none" }}
+          />
+
           <div>
             <label className="block text-xs font-mono text-muted mb-1.5">Name</label>
             <input type="text" required value={form.name}
