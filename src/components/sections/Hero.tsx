@@ -18,7 +18,7 @@ export default function Hero() {
   const mounted = useMounted();
 
   // On the server (and first client render before mount), render fully visible
-  // so the SSR HTML matches React's initial render — no hydration mismatch.
+  // so the SSR HTML matches React's initial render - no hydration mismatch.
   // After mount, framer-motion takes over with the staggered entry animation.
   const initial = mounted ? "hidden" : false;
 
@@ -57,7 +57,7 @@ export default function Hero() {
           variants={fadeUp}
           className="text-muted text-lg max-w-xl leading-relaxed"
         >
-          MarTech Developer by day, aspiring Full-Stack Engineer by night.
+          Platform engineer by day, full-stack builder by night.
         </motion.p>
 
         <motion.div

@@ -20,7 +20,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vikashksingh.dev"),
   title: {
-    default: "Vikash Kumar Singh — Software Engineer",
+    default: "Vikash Kumar Singh - Software Engineer",
     template: "%s | Vikash Kumar Singh",
   },
   description:
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vikash Kumar Singh — Software Engineer",
+    title: "Vikash Kumar Singh - Software Engineer",
     description:
       "Software Engineer with 6+ years building scalable platforms, APIs, and full-stack applications.",
   },
