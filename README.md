@@ -1,6 +1,6 @@
-# Vikash Kumar Singh — Portfolio
+# Vikash Kumar Singh - Portfolio
 
-Personal portfolio site built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, Redux Toolkit, and iron-session.
+Personal portfolio site built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, Redux Toolkit and iron-session.
 
 ## Stack
 
@@ -37,15 +37,11 @@ Open [http://localhost:3000](http://localhost:3000).
 | Variable | Required | Description |
 |---|---|---|
 | `SESSION_SECRET` | Yes (prod) | 32+ char string for iron-session encryption |
-| `GITHUB_TOKEN` | No | GitHub PAT — raises rate limit from 60 to 5000 req/hr |
+| `GITHUB_TOKEN` | No | GitHub PAT - raises rate limit from 60 to 5000 req/hr |
 | `RESEND_API_KEY` | No | Resend API key for contact form emails |
 | `CONTACT_EMAIL` | No | Recipient address for contact form (defaults to Gmail) |
 
-Without `RESEND_API_KEY` the contact form logs the payload to the console instead of sending — safe for local development.
-
-## CV PDF
-
-Drop your CV at `public/cv.pdf`. The "Download CV" button on the home page links there directly.
+Without `RESEND_API_KEY` the contact form logs the payload to the console instead of sending - safe for local development.
 
 ## Scripts
 
@@ -57,18 +53,6 @@ npm run typecheck  # tsc --noEmit
 npm run format     # prettier --write .
 ```
 
-## Deploy to Vercel
-
-1. Push this repo to GitHub.
-2. Import the repo in Vercel.
-3. Add the env vars from the table above in the Vercel project settings.
-4. Deploy — Vercel auto-detects Next.js and builds correctly.
-
-For the `SESSION_SECRET`, generate a random 32+ character string:
-
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-```
 
 ## Project structure
 
